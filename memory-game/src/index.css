@@ -1,0 +1,51 @@
+@import "tailwindcss";
+
+/* ------- Base Styles ------- */
+
+body {
+    background-color: var(--color-bg-cream);
+    margin: 0;
+    padding: 0;
+    color: var(--color-text-brown);
+}
+
+h1 {
+  font-size: 50px;
+  text-align: center;
+}
+
+h2 {
+    font-size: 40px;
+}
+
+p, button, label, li {
+    font-size: 30px;
+} 
+
+button {
+    cursor: pointer;
+}
+
+/* ------- Color Palette ------- */
+
+@theme {
+
+  /* Base Colors */
+  --color-bg-cream: #fffbf0;
+  --color-card-cream: #fff6e8;
+  --color-border-beige: #e8cfaf;
+  --color-text-brown: #3a2a1e;
+  --color-muted-text-brown: #7A6654;
+
+  /* Dessert Shop Accent Colors */
+  --color-dessert-pri-blue: #b6dfd7;
+  --color-dessert-sec-yellow: #fde2b7;
+  --color-dessert-selected-blue: #CDEFE8;
+  --color-dessert-button-blue: #B6DFD7;
+
+  /* Cafe Accent Colors */
+  --color-cafe-pri-brown: #8B5E34;
+  --color-cafe-sec-caramel: #D8A15D;
+  --color-cafe-selected-beige: #E8D3B5;
+  --color-cafe-button-brown: #7a461f;
+}
