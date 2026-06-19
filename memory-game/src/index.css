@@ -10,21 +10,29 @@ body {
 }
 
 h1 {
-  font-size: 50px;
+  font-size: 40px;
   text-align: center;
 }
 
 h2 {
-    font-size: 40px;
+    font-size: 30px;
 }
 
 p, button, label, li {
-    font-size: 30px;
+    font-size: 25px;
 } 
 
 button {
     cursor: pointer;
 }
+
+
+/* ------- Custom Styles ------- */
+
+.menu-button {
+  @apply w-72 bg-card-cream text-text-brown border-2 border-border-beige rounded-2xl px-8 py-4 shadow-md hover:bg-dessert-selected-blue hover:scale-105 transition font-semibold hover:border-dessert-button-blue
+}
+
 
 /* ------- Color Palette ------- */
 
