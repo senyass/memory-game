@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
-import GirlNpc from "../assets/girl-npc.png";
 
-function MemorizePhase({ selectedDifficulty, correctOrder, onContinue, time }) {
+function MemorizePhase({ selectedDifficulty, correctOrder, onContinue, time, currentTheme }) {
   const [timeLeft, setTimeLeft] = useState(time);
 
   useEffect(() => {
@@ -24,19 +23,19 @@ function MemorizePhase({ selectedDifficulty, correctOrder, onContinue, time }) {
   return (
     <div className="relative w-full h-full min-h-[520px] flex items-center justify-center">
       <div className="absolute bottom-0 z-20">
-        <img src={GirlNpc} alt="" className="-translate-x-50 translate-y-50 w-130" />
+        <img src={currentTheme.npc} alt="" className={currentTheme.npcClass} />
       </div>
 
       <div className="relative ml-72 bg-card-cream border-2 border-border-beige rounded-[35px] px-14 py-10 shadow-xl text-center max-w-xl">
-        <p className="text-muted-text-brown tracking-[0.35em] mb-4"> Difficulty: {selectedDifficulty}</p>
+        <p className="text-muted-text-brown tracking-[0.35em] mb-1"> Difficulty: {selectedDifficulty}</p>
+         <p className="text-muted-text-brown !text-[16px] mb-6 "> Memorize the order before time runs out. </p>
 
         <h2 className="mb-6">Hi! My order is:</h2>
-
         <ul className="space-y-3">
           {correctOrder.map((item) => (
             <li key={item.name} className="flex items-center justify-center gap-3">
               <span>{item.name}</span>
-              <div className="w-10 h-10 rounded-full bg-dessert-sec-yellow border-2 border-border-beige flex items-center justify-center overflow-hidden">
+              <div className={`w-10 h-10 rounded-full ${currentTheme.accentBg} border-2 border-border-beige flex items-center justify-center overflow-hidden`}>                
                 <img src={item.image} alt={item.name} className="w-full h-full object-contain p-1" />
               </div>
             </li>

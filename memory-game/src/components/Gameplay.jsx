@@ -4,7 +4,7 @@ import SelectPhase from './SelectPhase';
 import ResultsPhase from './ResultsPhase';
 import { difficultySettings, themeItems } from "../data/gameData";
 
-function Gameplay({ selectedDifficulty, selectedTheme, onBack }) {
+function Gameplay({ selectedDifficulty, selectedTheme, currentTheme, onBack }) {
   const [phase, setPhase] = useState('memorize');
   const [selectedItems, setSelectedItems] = useState([]);
   const [round, setRound] = useState(() =>
@@ -57,6 +57,7 @@ function Gameplay({ selectedDifficulty, selectedTheme, onBack }) {
           selectedDifficulty={selectedDifficulty}
           correctOrder={round.correctOrder}
           time={round.time}
+          currentTheme={currentTheme}
           onContinue={() => setPhase('select')}
         />
       )}
@@ -66,6 +67,7 @@ function Gameplay({ selectedDifficulty, selectedTheme, onBack }) {
           items={round.items}
           selectedItems={selectedItems}
           setSelectedItems={setSelectedItems}
+          currentTheme={currentTheme}
           onSubmit={() => setPhase('results')}
         />
       )}
@@ -76,6 +78,7 @@ function Gameplay({ selectedDifficulty, selectedTheme, onBack }) {
           selectedItems={selectedItems}
           correctCount={correctCount}
           accuracy={accuracy}
+          currentTheme={currentTheme}
           onTryAgain={resetGame}
           onBack={onBack}
         />

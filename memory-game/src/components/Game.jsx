@@ -4,16 +4,19 @@ import Menu from '../components/Menu';
 import Customize from '../components/Customize';
 import Instructions from '../components/Instructions';
 import Gameplay from '../components/Gameplay';
+import { themeStyles } from '../data/themeStyles';
 
 function Game() {
   const [screen, setScreen] = useState('menu');
   const [selectedDifficulty, setSelectedDifficulty] = useState('Easy');
   const [selectedTheme, setSelectedTheme] = useState('Dessert Shop');
+  const currentTheme = themeStyles[selectedTheme];
 
   return (
-    <GameFrame>
+    <GameFrame currentTheme={currentTheme}>
       {screen === 'menu' && (
         <Menu
+          currentTheme={currentTheme}
           onStart={() => setScreen('gameplay')}
           onCustomize={() => setScreen('customize')}
           onInstructions={() => setScreen('instructions')}
@@ -22,6 +25,7 @@ function Game() {
 
       {screen === 'customize' && (
         <Customize
+          currentTheme={currentTheme}
           selectedDifficulty={selectedDifficulty}
           setSelectedDifficulty={setSelectedDifficulty}
           selectedTheme={selectedTheme}
@@ -31,13 +35,16 @@ function Game() {
       )}
 
        {screen === 'instructions' && (
-        <Instructions onBack={() => setScreen('menu')} />
+        <Instructions 
+          currentTheme={currentTheme}
+          onBack={() => setScreen('menu')} />
       )}
 
        {screen === 'gameplay' && (
         <Gameplay
           selectedDifficulty={selectedDifficulty}
           selectedTheme={selectedTheme}
+          currentTheme={currentTheme}
           onBack={() => setScreen('menu')}
         />
       )}

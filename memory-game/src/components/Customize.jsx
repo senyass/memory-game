@@ -1,4 +1,6 @@
-function Customize({selectedDifficulty,setSelectedDifficulty, selectedTheme, setSelectedTheme,onBack}) {
+import ThemedButton from './ThemedButton';
+
+function Customize({ selectedDifficulty, setSelectedDifficulty, selectedTheme, setSelectedTheme, currentTheme, onBack }) {
   const difficulties = ['Easy', 'Medium', 'Hard'];
   const themes = ['Dessert Shop', 'Café'];
 
@@ -14,8 +16,8 @@ function Customize({selectedDifficulty,setSelectedDifficulty, selectedTheme, set
               <button
                 key={difficulty}
                 onClick={() => setSelectedDifficulty(difficulty)}
-                className={`rounded-2xl px-6 py-4 text-left border-2 transition ${ selectedDifficulty === difficulty  ? 'bg-dessert-selected-blue border-dessert-pri-blue' : 'bg-dessert-sec-yellow border-border-beige'}`}>
-                    {difficulty}
+                className={`rounded-2xl px-6 py-4 text-left border-2 transition ${selectedDifficulty === difficulty ? `${currentTheme.selectedBg} ${currentTheme.primaryBorder}` : `${currentTheme.accentBg} border-border-beige`}`}>
+                {difficulty}
               </button>
             ))}
           </div>
@@ -29,8 +31,7 @@ function Customize({selectedDifficulty,setSelectedDifficulty, selectedTheme, set
               <button
                 key={theme}
                 onClick={() => setSelectedTheme(theme)}
-                className={`rounded-2xl px-6 py-4 text-left border-2 transition ${
-                  selectedTheme === theme  ? 'bg-dessert-selected-blue border-dessert-pri-blue'  : 'bg-dessert-sec-yellow border-border-beige' }`}  >
+                className={`rounded-2xl px-6 py-4 text-left border-2 transition ${selectedTheme === theme ? `${currentTheme.selectedBg} ${currentTheme.primaryBorder}` : `${currentTheme.accentBg} border-border-beige`}`}>
                 {theme}
               </button>
             ))}
@@ -39,9 +40,7 @@ function Customize({selectedDifficulty,setSelectedDifficulty, selectedTheme, set
       </div>
 
       <div className="flex justify-center mt-8">
-        <button onClick={onBack} className="menu-button">
-          Back to Menu
-        </button>
+        <ThemedButton onClick={onBack} currentTheme={currentTheme}>Back to Menu</ThemedButton>
       </div>
     </div>
   );
